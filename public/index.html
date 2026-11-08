@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <meta name="description" content="VEYRO — a considered edit of modern streetwear, everyday essentials and pieces made to wear on repeat.">
+  <title>VEYRO — Signature Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#f2f0e9;--paper-2:#e9e6de;--ink:#1b1c19;--ink-2:#343630;--muted:#777970;
+      --line:#d8d6ce;--white:#fffefa;--olive:#777c69;--serif:'Playfair Display',Georgia,serif;
+      --sans:'DM Sans',Arial,sans-serif;--display:'Manrope',Arial,sans-serif;
+      --page: min(1440px, 100% - 10.4vw);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:105px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);letter-spacing:.005em;-webkit-font-smoothing:antialiased}
+    body.locked{overflow:hidden}
+    button,input,select{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .announcement{min-height:31px;padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--ink);color:#f5f2e9;text-align:center;font-size:9px;letter-spacing:.17em;text-transform:uppercase}
+    .announcement .dot{width:4px;height:4px;border-radius:50%;background:#b9bda9;display:inline-block}
+    .site-header{height:78px;padding:0 5.2vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;position:sticky;top:0;z-index:20;background:rgba(242,240,233,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(27,28,25,.09)}
+    .nav{display:flex;align-items:center;gap:29px}.nav a,.header-link{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;position:relative}
+    .nav a:after{content:"";height:1px;position:absolute;bottom:-8px;left:0;width:0;background:currentColor;transition:width .22s}.nav a:hover:after{width:100%}
+    .wordmark{font-family:var(--display);font-size:25px;font-weight:800;letter-spacing:.31em;padding-left:.31em;justify-self:center}
+    .header-tools{display:flex;justify-self:end;align-items:center;gap:23px}.header-link{border:0;background:none;padding:9px 0;color:var(--ink)}
+    .bag-count{display:inline-grid;place-items:center;width:19px;height:19px;margin-left:5px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:9px;letter-spacing:0}
+    .menu-toggle{display:none;border:0;background:none;padding:8px 0;color:var(--ink)}
+    .mobile-nav{display:none;position:absolute;top:100%;left:0;right:0;padding:18px 6vw 24px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 25px #0000000b}
+    .mobile-nav.open{display:grid;gap:18px}.mobile-nav a{font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+
+    .hero{min-height:min(790px,calc(100svh - 109px));height: min(790px,calc(100svh - 109px));min-height:610px;position:relative;isolation:isolate;display:flex;align-items:flex-end;overflow:hidden;background:#6c6d64;color:#fff}
+    .hero-media{position:absolute;inset:0;z-index:-2;background-image:url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=2400&q=90');background-position:center 43%;background-size:cover;transform:scale(1.015);animation:heroReveal 1.1s ease-out both}
+    .hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,16,13,.65) 0%,rgba(14,16,13,.26) 48%,rgba(14,16,13,.02) 100%),linear-gradient(0deg,rgba(14,16,13,.25),transparent 55%)}
+    .hero-content{width:var(--page);margin:0 auto;padding:0 0 clamp(70px,9vw,130px);animation:contentReveal .8s .12s both}
+    .eyebrow{font-size:9px;letter-spacing:.24em;text-transform:uppercase;font-weight:600}
+    .hero-kicker{display:flex;align-items:center;gap:11px;color:#e3e0d6}.hero-kicker:before{content:"";height:1px;width:28px;background:#d4d0c5}
+    .hero h1{font-family:var(--display);font-size:clamp(68px,11.8vw,162px);line-height:.82;letter-spacing:-.095em;font-weight:600;margin:25px 0 27px;max-width:850px}
+    .hero h1 em{font-family:var(--serif);font-weight:500;letter-spacing:-.065em}
+    .hero-copy{font-size:12px;line-height:1.9;letter-spacing:.035em;color:#e5e4dd;max-width:340px;margin:0}
+    .button{min-height:49px;display:inline-flex;align-items:center;justify-content:center;gap:35px;padding:0 19px;margin-top:27px;background:var(--paper);color:var(--ink);border:1px solid var(--paper);font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
+    .button:hover{background:transparent;color:#fff;border-color:#fff}.button .arrow{font-size:16px;line-height:1}
+    .hero-index{position:absolute;right:5.2vw;bottom:43px;display:flex;align-items:center;gap:13px;color:#eee9df;font-size:9px;letter-spacing:.15em}.hero-index:before{content:"";width:42px;height:1px;background:#e4dfd4}
+    @keyframes heroReveal{from{transform:scale(1.07);filter:brightness(.8)}to{transform:scale(1.015);filter:brightness(1)}}
+    @keyframes contentReveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    .ticker{height:53px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:clamp(18px,4vw,62px);padding:0 15px;overflow:hidden;white-space:nowrap;color:#696b62;font-size:8px;letter-spacing:.2em;text-transform:uppercase}
+    .ticker span:nth-child(even){font-family:var(--serif);font-size:15px;color:#98998f}
+    .section{width:var(--page);margin:0 auto;padding:105px 0}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:32px}
+    .section-label{color:var(--olive);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+    h2{font-family:var(--display);font-size:clamp(34px,4.1vw,55px);line-height:1.02;letter-spacing:-.065em;font-weight:600;margin:13px 0 0}
+    .section-intro{max-width:300px;color:var(--muted);font-size:11px;line-height:1.9;text-align:right;margin:0 0 3px}
+
+    .category-grid{display:grid;grid-template-columns:1.08fr 1fr 1fr;gap:13px}
+    .category-card{height:clamp(245px,34vw,450px);position:relative;overflow:hidden;background:#d8d6ce;color:#fff;isolation:isolate}
+    .category-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);z-index:-1}
+    .category-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+    .category-card:hover img{transform:scale(1.055)}
+    .category-info{position:absolute;left:22px;right:20px;bottom:23px;display:flex;align-items:end;justify-content:space-between;gap:15px}
+    .category-info small{display:block;font-size:8px;letter-spacing:.19em;text-transform:uppercase;margin-bottom:7px;color:#e0ded6}
+    .category-info strong{font-family:var(--display);font-size:clamp(20px,2.5vw,32px);letter-spacing:-.055em;font-weight:600}
+    .circle-arrow{width:37px;height:37px;display:grid;place-items:center;border:1px solid #ffffffa8;border-radius:50%;font-size:16px;transition:background .2s,color .2s}
+    .category-card:hover .circle-arrow{background:white;color:var(--ink)}
+
+    .collection-section{padding-top:45px}
+    .collection-top{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}
+    .collection-meta{font-size:9px;color:var(--muted);letter-spacing:.11em;text-transform:uppercase;margin-top:10px}
+    .collection-tools{display:flex;align-items:center;gap:13px}
+    .search-box{display:flex;align-items:center;gap:8px;min-width:175px;border-bottom:1px solid #bcbdb4;padding:8px 1px}
+    .search-box svg{width:14px;height:14px;flex:none;color:#777970}
+    .search-box input{width:100%;min-width:0;border:0;outline:0;background:transparent;font-size:10px;color:var(--ink)}
+    .sort-select{background:transparent;border:0;border-bottom:1px solid #bcbdb4;border-radius:0;padding:8px 17px 8px 2px;font-size:9px;color:var(--ink);outline:0;max-width:145px}
+    .filter-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:23px}
+    .filter{border:1px solid transparent;border-radius:30px;padding:9px 14px;background:transparent;color:#686b62;font-size:8px;letter-spacing:.13em;text-transform:uppercase;transition:all .2s}
+    .filter:hover,.filter.active{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+    .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px 17px}
+    .product{min-width:0;animation:productIn .4s both}
+    @keyframes productIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+    .product-image{aspect-ratio:.79;background:#e6e3db;position:relative;overflow:hidden;isolation:isolate}
+    .product-image:before{content:"VEYRO";position:absolute;z-index:-1;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:17px;letter-spacing:.3em;color:#b7b5ac}
+    .product-image img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+    .product:hover .product-image img{transform:scale(1.045)}
+    .product-badge{position:absolute;top:12px;left:12px;background:rgba(242,240,233,.94);padding:7px 9px;font-size:7px;letter-spacing:.15em;text-transform:uppercase;color:#45473f}
+    .product-action{position:absolute;left:12px;right:12px;bottom:12px;min-height:43px;border:0;background:rgba(242,240,233,.96);color:var(--ink);font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateY(7px);transition:opacity .2s,transform .2s}
+    .product:hover .product-action,.product-action:focus-visible{opacity:1;transform:translateY(0)}
+    .product-details{padding:14px 1px 0}
+    .product-title-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+    .product h3{font-size:10px;font-weight:700;letter-spacing:.085em;text-transform:uppercase;margin:0;line-height:1.45}
+    .price{font-size:10px;white-space:nowrap;color:#52554c}
+    .product-description{font-size:9px;color:var(--muted);line-height:1.6;margin:6px 0 0;min-height:15px}
+    .product-controls{display:flex;gap:7px;margin-top:13px}
+    .product-controls select{min-width:0;flex:1;appearance:auto;border:1px solid #d1cfc7;background:transparent;border-radius:0;padding:11px 9px;font-size:9px;color:var(--ink)}
+    .add-button{padding:0 15px;border:1px solid var(--ink);background:var(--ink);color:white;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,color .2s}
+    .add-button:hover:not(:disabled){background:transparent;color:var(--ink)}.add-button:disabled{opacity:.45;cursor:not-allowed}
+    .empty-state{grid-column:1/-1;text-align:center;padding:70px 15px;color:var(--muted);font-size:12px}
+
+    .editorial{background:#deddd4;display:grid;grid-template-columns:1fr 1fr;min-height:590px}
+    .editorial-image{min-height:460px;position:relative;overflow:hidden;background:#b8b7ae}
+    .editorial-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .editorial-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(45px,8vw,115px)}
+    .editorial-copy h2{font-size:clamp(43px,6.1vw,78px);line-height:.99;letter-spacing:-.075em;margin:18px 0 20px}
+    .editorial-copy h2 em{font-family:var(--serif);font-weight:500}
+    .editorial-copy p{max-width:340px;color:#66695f;font-size:11px;line-height:2;margin:0}
+    .underlined-link{display:inline-flex;align-items:center;gap:24px;margin-top:29px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-size:8px;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
+
+    .manifesto{padding:105px 5vw;text-align:center;background:var(--paper)}
+    .manifesto .section-label{display:block}
+    .manifesto h2{max-width:900px;margin:19px auto 17px;font-size:clamp(36px,6vw,76px);line-height:1.08;letter-spacing:-.07em}
+    .manifesto h2 em{font-family:var(--serif);font-weight:500}
+    .manifesto p{max-width:420px;margin:0 auto;color:var(--muted);font-size:11px;line-height:1.9}
+    .values{width:var(--page);margin:0 auto 105px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .value{padding:29px 27px;border-right:1px solid var(--line)}.value:last-child{border-right:0}
+    .value-number{font-family:var(--serif);font-style:italic;color:var(--olive);font-size:19px}
+    .value h3{font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin:13px 0 8px}
+    .value p{font-size:10px;color:var(--muted);line-height:1.8;margin:0;max-width:260px}
+
+    .newsletter{background:#252822;color:var(--paper);padding:72px 5.2vw;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}
+    .newsletter h2{font-size:clamp(37px,5vw,62px);margin:12px 0 9px;letter-spacing:-.07em}
+    .newsletter p{font-size:10px;color:#c2c3b9;line-height:1.8;margin:0}
+    .newsletter-form{display:flex;align-items:center;max-width:500px;width:100%;justify-self:end;border-bottom:1px solid #919489}
+    .newsletter-form input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;padding:15px 0;font-size:10px}
+    .newsletter-form input::placeholder{color:#c2c3b9}
+    .newsletter-form button{background:none;border:0;color:white;padding:14px 0 14px 15px;font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+    .newsletter-status{grid-column:2;justify-self:end;color:#c2c3b9;font-size:9px;min-height:13px;margin-top:-23px;width:100%;max-width:500px}
+
+    .site-footer{background:#191b17;color:#f2f0e9;padding:53px 5.2vw 24px}
+    .footer-main{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;padding-bottom:53px}
+    .footer-logo{font-family:var(--display);font-size:25px;font-weight:800;letter-spacing:.28em}
+    .footer-about{max-width:260px;font-size:10px;color:#a5a79d;line-height:1.9;margin:15px 0 0}
+    .footer-col h3{font-size:8px;letter-spacing:.17em;text-transform:uppercase;margin:7px 0 18px}
+    .footer-col a{display:block;width:max-content;max-width:100%;font-size:9px;color:#a5a79d;margin-top:12px;transition:color .2s}.footer-col a:hover{color:white}
+    .footer-bottom{border-top:1px solid #41433c;padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#92958a;font-size:8px;letter-spacing:.13em;text-transform:uppercase}
+
+    .drawer-backdrop{position:fixed;inset:0;background:rgba(10,11,9,.53);z-index:39;opacity:0;pointer-events:none;transition:opacity .25s}
+    .drawer-backdrop.open{opacity:1;pointer-events:auto}
+    .cart-drawer{position:fixed;z-index:40;right:0;top:0;width:min(465px,100%);height:100%;height:100dvh;overflow-y:auto;background:var(--paper);padding:27px 27px 30px;transform:translateX(102%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:-20px 0 55px #00000013}
+    .cart-drawer.open{transform:translateX(0)}
+    .drawer-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .drawer-head h2{font-size:18px;letter-spacing:-.04em;margin:0}
+    .close-button{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:20px;line-height:1}
+    .cart-items{padding:4px 0}
+    .cart-empty{padding:34px 0;color:var(--muted);font-size:11px;line-height:1.8}
+    .cart-line{display:grid;grid-template-columns:1fr auto;gap:15px;padding:19px 0;border-bottom:1px solid var(--line);font-size:10px}
+    .cart-line-title{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+    .cart-line small{display:block;color:var(--muted);font-size:9px;margin-top:7px}
+    .cart-line-price{text-align:right;white-space:nowrap}
+    .cart-line-actions{display:flex;align-items:center;gap:10px;margin-top:12px}
+    .qty-control{display:flex;align-items:center;border:1px solid var(--line)}
+    .qty-control button{width:27px;height:25px;border:0;background:transparent;color:var(--ink);font-size:14px}
+    .qty-control span{min-width:18px;text-align:center;font-size:9px}
+    .remove-button{border:0;background:none;text-decoration:underline;color:var(--muted);font-size:9px;padding:5px}
+    .cart-summary{border-top:1px solid var(--line);padding-top:19px;margin-top:9px}
+    .cart-total{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+    .cart-total strong{font-size:14px}
+    .cart-note{font-size:9px;line-height:1.8;color:var(--muted);margin:12px 0 17px}
+    .checkout-form{display:grid;gap:9px}
+    .checkout-form input{width:100%;background:transparent;border:1px solid #cccac1;border-radius:0;padding:14px 12px;color:var(--ink);font-size:10px;outline-offset:2px}
+    .checkout-form button{min-height:47px;background:var(--ink);border:1px solid var(--ink);color:white;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .2s,color .2s}
+    .checkout-form button:hover{background:transparent;color:var(--ink)}
+    .checkout-message{min-height:15px;font-size:9px;color:var(--muted);line-height:1.7;margin:10px 0 0}
+    .toast{position:fixed;z-index:60;left:50%;bottom:22px;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--ink);color:white;padding:13px 19px;font-size:9px;letter-spacing:.08em;box-shadow:0 6px 25px #0002;transition:opacity .2s,transform .2s;white-space:nowrap}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    :focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+    @media(max-width:1000px){:root{--page:min(1440px,100% - 8vw)}.site-header{padding:0 4vw}.nav{gap:17px}.nav a,.header-link{font-size:8px}.category-info{left:15px;right:14px;bottom:17px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.editorial{min-height:500px}.editorial-copy{padding:7vw}.values{margin-bottom:75px}}
+    @media(max-width:650px){:root{--page:calc(100% - 10vw)}.announcement{font-size:7px;letter-spacing:.12em;min-height:29px}.site-header{height:66px;grid-template-columns:1fr auto 1fr;padding:0 5vw}.menu-toggle{display:block;justify-self:start}.menu-toggle svg{width:19px;height:19px}.nav{display:none}.wordmark{font-size:21px}.header-tools{gap:0}.header-link{font-size:8px}.search-header{display:none}.hero{height:calc(82svh - 95px);min-height:560px;max-height:760px}.hero-media{background-position:57% center}.hero:after{background:linear-gradient(90deg,rgba(14,16,13,.52),rgba(14,16,13,.13)),linear-gradient(0deg,rgba(14,16,13,.34),transparent 70%)}.hero-content{padding-bottom:78px}.hero h1{font-size:clamp(66px,17vw,112px);margin:22px 0}.hero-copy{font-size:10px;max-width:280px}.hero-index{right:5vw;bottom:27px;font-size:8px}.ticker{height:43px;gap:17px;font-size:7px}.section{padding:70px 0}.section-heading{align-items:flex-start;flex-direction:column;gap:12px;margin-bottom:24px}.section-intro{text-align:left;max-width:300px;font-size:10px}.category-grid{grid-template-columns:1fr 1fr;gap:8px}.category-card{height:clamp(205px,58vw,330px)}.category-card:first-child{grid-column:1/-1;height:clamp(270px,76vw,400px)}.category-info strong{font-size:22px}.circle-arrow{width:32px;height:32px}.collection-section{padding-top:10px}.collection-top{align-items:flex-start;flex-direction:column;margin-bottom:18px}.collection-tools{width:100%;justify-content:space-between}.search-box{flex:1;min-width:0}.sort-select{max-width:133px}.filter-row{gap:3px;padding:10px 0;margin-bottom:16px}.filter{padding:8px 11px;font-size:7px}.product-grid{gap:29px 10px}.product-image{aspect-ratio:.72}.product-action{opacity:1;transform:none;left:7px;right:7px;bottom:7px;min-height:37px;font-size:7px}.product-badge{left:7px;top:7px;padding:6px 7px;font-size:6px}.product-details{padding-top:11px}.product h3{font-size:8px}.price{font-size:9px}.product-description{font-size:8px;margin-top:5px}.product-controls{gap:5px;margin-top:10px}.product-controls select{padding:9px 5px;font-size:8px}.add-button{padding:0 8px;font-size:7px;letter-spacing:.08em}.editorial{grid-template-columns:1fr}.editorial-image{min-height:390px}.editorial-copy{padding:57px 8vw}.editorial-copy h2{font-size:clamp(47px,12vw,72px)}.manifesto{padding:75px 7vw}.manifesto h2{font-size:clamp(37px,10vw,58px)}.manifesto p{font-size:10px}.values{grid-template-columns:1fr;margin-bottom:65px}.value{padding:22px 4vw;border-right:0;border-bottom:1px solid var(--line)}.value:last-child{border-bottom:0}.value p{max-width:100%}.newsletter{grid-template-columns:1fr;padding:56px 7vw;gap:24px}.newsletter h2{font-size:49px}.newsletter-form{justify-self:stretch}.newsletter-status{grid-column:1;justify-self:start;margin-top:-15px}.footer-main{grid-template-columns:1fr 1fr;gap:35px 20px;padding-bottom:38px}.footer-brand-col{grid-column:1/-1}.site-footer{padding:42px 7vw 22px}.footer-bottom{font-size:7px;flex-direction:column;gap:10px}.cart-drawer{padding:22px 20px}.cart-line{grid-template-columns:1fr auto}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  
+
+    /* VEYRO bag — refined mini-checkout */
+    .drawer-backdrop{background:rgba(18,19,16,.62);backdrop-filter:blur(5px)}
+    .cart-drawer{width:min(520px,100%);padding:0;background:#f7f5ef;display:flex;flex-direction:column;overflow:hidden;box-shadow:-28px 0 80px #0002}
+    .drawer-head{flex:none;padding:29px 30px 23px;border-bottom:1px solid #e1ded5;align-items:center}
+    .drawer-kicker{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#828475;margin-bottom:9px;font-weight:700}
+    .drawer-head h2{font-family:var(--display);font-size:27px;line-height:1;letter-spacing:-.065em;font-weight:600;text-transform:none}
+    #bagHeadingCount{font-family:var(--sans);font-size:10px;letter-spacing:.08em;color:#8b8c82;font-weight:500;vertical-align:middle;margin-left:5px}
+    .close-button{width:39px;height:39px;border:1px solid #d7d5cc;background:transparent;border-radius:50%;font-size:22px;display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
+    .close-button:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+    .drawer-delivery{flex:none;display:flex;align-items:center;gap:10px;padding:13px 30px;background:#eeece4;color:#5d6155;font-size:9px;letter-spacing:.055em}
+    .delivery-mark{font-size:14px;color:#858b73}
+    .cart-items{flex:1;min-height:90px;overflow:auto;padding:0 30px;overscroll-behavior:contain}
+    .cart-line{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:15px;align-items:start;padding:21px 0;border-bottom:1px solid #e1ded5;font-size:10px}
+    .cart-line-image{width:86px;aspect-ratio:4/5;background:#e8e5dc;object-fit:cover;display:block}
+    .cart-line-image-placeholder{width:86px;aspect-ratio:4/5;background:linear-gradient(145deg,#e6e3da,#d7d4ca);display:grid;place-items:center;color:#96978d;font-family:var(--display);font-size:10px;letter-spacing:.17em}
+    .cart-line-content{min-width:0;padding-top:2px}
+    .cart-line-title{font-family:var(--display);font-size:10px;line-height:1.5;font-weight:700;letter-spacing:.075em;text-transform:uppercase;overflow-wrap:anywhere}
+    .cart-line small{display:block;color:#85867d;font-size:9px;margin-top:7px;letter-spacing:.04em}
+    .cart-line-actions{display:flex;align-items:center;gap:13px;margin-top:15px;flex-wrap:wrap}
+    .qty-control{height:31px;display:flex;align-items:center;border:1px solid #d5d2c8;background:transparent}
+    .qty-control button{width:29px;height:29px;border:0;background:transparent;color:var(--ink);font-size:15px;transition:background .15s}
+    .qty-control button:hover{background:#e8e5dc}
+    .qty-control span{min-width:19px;text-align:center;font-size:9px;font-variant-numeric:tabular-nums}
+    .remove-button{border:0;background:none;text-decoration:underline;text-underline-offset:3px;color:#818278;font-size:8px;letter-spacing:.05em;padding:6px 0}
+    .remove-button:hover{color:var(--ink)}
+    .cart-line-price{font-size:10px;font-weight:600;text-align:right;white-space:nowrap;padding-top:3px;font-variant-numeric:tabular-nums}
+    .cart-empty{min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px 15px;color:#7b7e72}
+    .cart-empty-icon{width:64px;height:64px;border:1px solid #d7d5cb;border-radius:50%;display:grid;place-items:center;margin-bottom:20px;color:#777c69}
+    .cart-empty-icon svg{width:23px;height:23px}
+    .cart-empty strong{font-family:var(--display);font-size:19px;letter-spacing:-.045em;color:var(--ink);font-weight:600}
+    .cart-empty p{max-width:230px;font-size:10px;line-height:1.8;margin:9px 0 20px;color:#85867d}
+    .empty-shop-link{display:inline-flex;align-items:center;gap:18px;background:var(--ink);color:white;padding:14px 17px;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:background .2s}
+    .empty-shop-link:hover{background:#55594d}
+    .cart-summary[hidden]{display:none!important}
+    .cart-summary{flex:none;border-top:1px solid #dedbd2;background:#f7f5ef;padding:19px 30px 16px;margin:0;box-shadow:0 -10px 30px #00000005}
+    .summary-caption{display:flex;justify-content:space-between;align-items:center;color:#818278;font-size:8px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+    .cart-total{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#55574f}
+    .cart-total strong{font-family:var(--display);font-size:22px;letter-spacing:-.05em;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+    .cart-note{font-size:8px;line-height:1.75;color:#85867d;margin:10px 0 16px}
+    .checkout-form{display:grid;grid-template-columns:1fr;gap:8px}
+    .checkout-form label{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#686b61;font-weight:700}
+    .checkout-form input{height:45px;width:100%;background:#fffefa;border:1px solid #d8d5cb;border-radius:0;padding:0 13px;color:var(--ink);font-size:10px;outline-offset:2px}
+    .checkout-form input::placeholder{color:#aaa99f}
+    .checkout-form button{min-height:49px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:0 17px;background:var(--ink);border:1px solid var(--ink);color:white;font-size:8px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:background .2s,color .2s}
+    .checkout-form button:hover:not(:disabled){background:transparent;color:var(--ink)}
+    .checkout-form button:disabled{opacity:.6;cursor:wait}
+    .checkout-message{min-height:14px;font-size:9px;color:#72766a;line-height:1.6;margin:7px 0 0}
+    .drawer-footnote{display:flex;justify-content:space-between;border-top:1px solid #e3e0d7;margin-top:12px;padding-top:11px;color:#a0a095;font-size:7px;letter-spacing:.17em}
+    @media(max-width:650px){.cart-drawer{padding:0;width:100%;max-width:100%}.drawer-head{padding:21px 20px 17px}.drawer-head h2{font-size:24px}.drawer-delivery{padding:12px 20px;font-size:8px}.cart-items{padding:0 20px}.cart-line{grid-template-columns:76px minmax(0,1fr) auto;gap:12px;padding:16px 0}.cart-line-image,.cart-line-image-placeholder{width:76px}.cart-line-title{font-size:9px}.cart-line-price{font-size:9px}.cart-line-actions{gap:10px;margin-top:12px}.qty-control{height:29px}.qty-control button{width:26px;height:27px}.cart-summary{padding:15px 20px max(13px,env(safe-area-inset-bottom))}.cart-total strong{font-size:20px}.cart-note{margin:8px 0 12px}.checkout-form input{height:42px}.checkout-form button{min-height:46px}.drawer-footnote{margin-top:9px}}
+    @media(max-height:690px) and (min-width:651px){.drawer-head{padding-top:18px;padding-bottom:15px}.drawer-delivery{padding:9px 30px}.cart-line{padding:13px 0}.cart-line-image,.cart-line-image-placeholder{width:72px}.cart-summary{padding-top:13px;padding-bottom:10px}.cart-note{margin:7px 0 10px}.checkout-form input{height:40px}.checkout-form button{min-height:43px}}
+
+
+
+    /* SIGNATURE EDITION — storefront-wide finish */
+    :root{--paper:#f4f2eb;--paper-2:#ebe8df;--ink:#171914;--ink-2:#30352b;--muted:#777b70;--line:#dcd9cf;--olive:#727b63;--white:#fffefa;--page:min(1480px,100% - 11vw)}
+    body{background:var(--paper);color:var(--ink)}
+    ::selection{background:#838b72;color:#fff}
+    .announcement{background:#171914;color:#eeece3;min-height:34px;letter-spacing:.2em}
+    .site-header{height:82px;background:rgba(244,242,235,.92);border-bottom-color:#d4d1c7;box-shadow:0 7px 24px rgba(33,35,28,.025)}
+    .wordmark{font-size:27px;letter-spacing:.34em;transition:opacity .2s,letter-spacing .2s}
+    .wordmark:hover{opacity:.72;letter-spacing:.39em}
+    .nav{gap:clamp(20px,2.5vw,38px)}
+    .nav a,.header-link{font-size:9px;letter-spacing:.17em}
+    .header-tools{gap:clamp(13px,1.8vw,25px)}
+    .header-link{transition:opacity .2s}
+    .header-link:hover{opacity:.58}
+    .saved-count{display:inline-grid;place-items:center;min-width:17px;height:17px;border:1px solid #c9c8bd;border-radius:50%;margin-left:4px;padding:0 4px;font-size:8px;letter-spacing:0}
+    .saved-toggle.active{color:#777f67}
+    .saved-toggle.active .saved-count{background:#777f67;border-color:#777f67;color:white}
+    .bag-count{background:#777f67;color:white;width:20px;height:20px}
+    .hero{height:min(850px,calc(100svh - 116px));min-height:640px;max-height:850px;background:#55594d}
+    .hero-media{background-image:url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2400&q=90');background-position:center 38%;filter:saturate(.82)}
+    .hero:after{background:linear-gradient(90deg,rgba(13,16,12,.68) 0%,rgba(13,16,12,.34) 43%,rgba(13,16,12,.02) 100%),linear-gradient(0deg,rgba(13,16,12,.36),transparent 62%)}
+    .hero-content{padding-bottom:clamp(78px,10vw,145px)}
+    .hero h1{font-size:clamp(76px,12.5vw,178px);letter-spacing:-.105em;max-width:990px}
+    .hero h1 em{color:#d6d4c8}
+    .hero-copy{font-size:12px;max-width:380px;color:#eeece3}
+    .button{background:var(--paper);border-color:var(--paper);min-height:53px;padding:0 22px;gap:45px;box-shadow:0 9px 30px #0002}
+    .button:hover{background:transparent;border-color:#fff;color:white;box-shadow:none}
+    .hero-index{letter-spacing:.2em;color:#f3f0e7}
+    .ticker{height:58px;background:#efede5;letter-spacing:.24em}
+    .section{padding:clamp(76px,8vw,120px) 0}
+    .section-heading{margin-bottom:38px}
+    .section-label{color:#727b62}
+    h2{font-size:clamp(38px,4.4vw,60px)}
+    .section-intro{font-size:11px;max-width:330px}
+    .category-grid{gap:15px}
+    .category-card{box-shadow:0 12px 34px rgba(38,40,32,.055)}
+    .category-card:after{inset:20% 0 0;background:linear-gradient(0deg,rgba(8,10,7,.67),rgba(8,10,7,.02) 75%)}
+    .category-info{left:25px;right:22px;bottom:25px}
+    .category-info small{font-size:8px;letter-spacing:.23em}
+    .category-info strong{font-size:clamp(23px,2.7vw,36px)}
+    .circle-arrow{width:41px;height:41px;backdrop-filter:blur(8px)}
+    .collection-section{padding-top:35px}
+    .collection-top{margin-bottom:28px}
+    .collection-meta{letter-spacing:.16em}
+    .search-box{min-width:205px;border-bottom-color:#aeb0a4}
+    .search-box:focus-within{border-bottom-color:#454a3d}
+    .search-box input{font-size:11px}
+    .sort-select{font-size:10px;border-bottom-color:#aeb0a4}
+    .filter-row{padding:14px 0;margin-bottom:28px;border-color:#d6d4ca}
+    .filter{font-size:8px;padding:10px 16px;letter-spacing:.16em}
+    .product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:46px 18px}
+    .product{position:relative;min-width:0}
+    .product-image{aspect-ratio:.76;background:#e8e5dc;box-shadow:0 8px 28px rgba(40,41,34,.035)}
+    .product-image img{mix-blend-mode:normal}
+    .product-badge{top:13px;left:13px;font-size:7px;letter-spacing:.17em;background:rgba(247,246,239,.94);padding:8px 10px}
+    .product-action{opacity:1;transform:translateY(0);left:12px;right:12px;bottom:12px;min-height:42px;backdrop-filter:blur(8px);background:rgba(247,246,239,.94);border:1px solid rgba(255,255,255,.55);transition:background .2s,color .2s,transform .2s}
+    .product-action:hover{background:var(--ink);color:white}
+    .product-details{padding-top:16px}
+    .product-title-line{align-items:flex-start;gap:9px}
+    .product h3{font-size:10px;letter-spacing:.11em;line-height:1.5}
+    .price{font-family:var(--display);font-size:11px;font-weight:600;color:#30342c}
+    .product-description{font-size:9px;line-height:1.7;color:#777b70;min-height:30px}
+    .product-controls{margin-top:14px;gap:8px}
+    .product-controls select{background:rgba(255,255,255,.28);border-color:#cfccc1;padding:12px 10px;font-size:9px}
+    .product-controls select:focus{border-color:#7e866d}
+    .add-button{min-height:40px;padding:0 13px;background:#20231c;border-color:#20231c;letter-spacing:.13em}
+    .add-button:hover:not(:disabled){background:transparent;color:#20231c}
+    .product-card-tools{position:absolute;top:12px;right:12px;z-index:2;display:flex;gap:7px}
+    .product-tool{width:35px;height:35px;border:1px solid #ffffff9c;border-radius:50%;display:grid;place-items:center;background:rgba(247,246,239,.93);color:#272a23;font-size:16px;line-height:1;transition:background .2s,color .2s,transform .2s}
+    .product-tool:hover{transform:translateY(-2px);background:#20231c;color:white}
+    .product-tool.saved{background:#777f67;color:white;border-color:#777f67}
+    .product-action{left:12px;right:56px}
+    .editorial{background:#e5e2d9;min-height:630px}
+    .editorial-image{min-height:560px}
+    .editorial-image img{filter:saturate(.82);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+    .editorial:hover .editorial-image img{transform:scale(1.025)}
+    .editorial-copy{padding:clamp(50px,9vw,135px)}
+    .editorial-copy h2{font-size:clamp(48px,6.5vw,86px)}
+    .editorial-copy p{font-size:12px;line-height:2.05}
+    .underlined-link{font-size:9px;letter-spacing:.19em;gap:28px}
+    .manifesto{padding:clamp(85px,10vw,140px) 5vw;background:linear-gradient(180deg,#f4f2eb,#efede5)}
+    .manifesto h2{font-size:clamp(42px,6.6vw,88px)}
+    .manifesto p{font-size:12px;max-width:475px}
+    .values{margin-bottom:clamp(80px,9vw,125px);border-color:#d5d2c7}
+    .value{padding:34px 31px}
+    .value-number{font-size:22px}
+    .value h3{font-size:9px;letter-spacing:.19em}
+    .value p{font-size:11px;line-height:1.9}
+    .newsletter{background:#252a22;position:relative;overflow:hidden;padding:clamp(68px,8vw,108px) 5.5vw}
+    .newsletter:after{content:'V';position:absolute;right:7vw;top:-.55em;font-family:var(--display);font-size:clamp(230px,32vw,460px);font-weight:800;letter-spacing:-.14em;color:rgba(255,255,255,.035);pointer-events:none}
+    .newsletter>div,.newsletter-form,.newsletter-status{position:relative;z-index:1}
+    .newsletter h2{font-size:clamp(43px,5.5vw,72px)}
+    .newsletter p{font-size:11px}
+    .newsletter-form{border-bottom-color:#9a9e91}
+    .newsletter-form input{font-size:11px}
+    .newsletter-form button{font-size:9px;letter-spacing:.18em}
+    .site-footer{padding:62px 5.5vw 26px;background:#171a15}
+    .footer-main{padding-bottom:60px;gap:38px}
+    .footer-logo{font-size:29px;letter-spacing:.32em}
+    .footer-about{font-size:11px;line-height:2;max-width:290px}
+    .footer-col h3{font-size:8px;letter-spacing:.2em}
+    .footer-col a{font-size:10px;margin-top:14px}
+    .footer-bottom{font-size:8px;letter-spacing:.17em}
+    .scroll-progress{position:fixed;z-index:50;left:0;top:0;height:2px;width:0;background:#858d71;box-shadow:0 0 12px #858d7180;pointer-events:none}
+    .back-to-top{position:fixed;z-index:30;right:24px;bottom:24px;width:43px;height:43px;border:1px solid #d6d3c9;border-radius:50%;background:rgba(247,246,239,.94);color:#24271f;font-size:17px;box-shadow:0 8px 28px #17191418;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s,background .2s}
+    .back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+    .back-to-top:hover{background:#20231c;color:white}
+    .quick-view-backdrop{position:fixed;z-index:70;inset:0;padding:25px;display:none;align-items:center;justify-content:center;background:rgba(15,17,13,.64);backdrop-filter:blur(7px)}
+    .quick-view-backdrop.open{display:flex}
+    .quick-view{position:relative;width:min(850px,100%);max-height:min(690px,calc(100dvh - 50px));overflow:auto;display:grid;grid-template-columns:1fr 1fr;background:#f7f5ef;box-shadow:0 30px 100px #0004;animation:quickViewIn .24s ease-out both}
+    @keyframes quickViewIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .quick-view-close{position:absolute;z-index:2;right:15px;top:15px;width:39px;height:39px;border:1px solid #d5d2c8;border-radius:50%;background:#f7f5ef;color:#24271f;font-size:22px;display:grid;place-items:center}
+    .quick-view-visual{min-height:510px;background:#e7e4db;display:grid;place-items:center;overflow:hidden;color:#98998d;font-family:var(--display);letter-spacing:.3em;font-size:13px}
+    .quick-view-visual img{width:100%;height:100%;max-height:620px;object-fit:cover}
+    .quick-view-copy{padding:clamp(36px,5vw,65px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+    .quick-view-kicker{font-size:8px;color:#747d64;letter-spacing:.2em;font-weight:700}
+    .quick-view-copy h2{font-size:clamp(29px,3.2vw,43px);margin:17px 0 10px;line-height:1.06}
+    .quick-view-price{font-family:var(--display);font-size:15px;font-weight:600;margin:0 0 20px}
+    .quick-view-copy p{font-size:11px;line-height:1.9;color:#777b70;margin:0 0 29px}
+    .quick-view-copy label{font-size:8px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:9px}
+    .quick-view-copy select{width:100%;height:46px;padding:0 12px;border:1px solid #d4d1c7;background:transparent;color:var(--ink);font-size:10px}
+    .quick-view-add{width:100%;height:50px;margin-top:11px;padding:0 16px;background:#20231c;border:1px solid #20231c;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .2s,color .2s}
+    .quick-view-add:hover{background:transparent;color:#20231c}
+    .quick-view-add:disabled{opacity:.5;cursor:not-allowed}
+    .quick-view-foot{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#9a9b90;margin-top:22px}
+    @media(max-width:1199px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:900px){.site-header{height:74px}.header-tools{gap:14px}.nav{gap:18px}.editorial{min-height:500px}.editorial-image{min-height:500px}.editorial-copy{padding:7vw}.quick-view{max-width:700px}.quick-view-visual{min-height:440px}}
+    @media(max-width:650px){:root{--page:calc(100% - 10vw)}.site-header{height:66px}.wordmark{font-size:21px}.header-tools{gap:10px}.header-link{font-size:7px;letter-spacing:.1em}.saved-count{min-width:15px;height:15px;font-size:7px}.bag-count{width:18px;height:18px;font-size:8px}.hero{height:calc(84svh - 95px);min-height:560px;max-height:760px}.hero-media{background-position:59% center}.hero h1{font-size:clamp(67px,17vw,112px)}.ticker{gap:17px}.category-grid{gap:8px}.category-card{box-shadow:none}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 10px}.product-image{aspect-ratio:.72}.product-action{left:7px;right:45px;bottom:7px;min-height:36px;font-size:6px;padding:0 4px}.product-tool{width:30px;height:30px;font-size:14px}.product-card-tools{top:7px;right:7px}.product-badge{top:7px;left:7px;padding:6px 7px;font-size:6px}.product-details{padding-top:11px}.product h3{font-size:8px}.price{font-size:9px}.product-description{font-size:8px;min-height:28px}.product-controls select{padding:9px 5px;font-size:8px}.add-button{min-height:36px;padding:0 7px;font-size:6px;letter-spacing:.07em}.editorial{grid-template-columns:1fr;min-height:0}.editorial-image{min-height:390px}.editorial-copy{padding:57px 8vw}.manifesto{padding:76px 7vw}.values{grid-template-columns:1fr;margin-bottom:65px}.value{padding:23px 4vw;border-right:0;border-bottom:1px solid var(--line)}.value:last-child{border-bottom:0}.newsletter{grid-template-columns:1fr;padding:58px 7vw;gap:23px}.newsletter-form{justify-self:stretch}.newsletter-status{grid-column:1;justify-self:start;margin-top:-14px}.footer-main{grid-template-columns:1fr 1fr;gap:35px 20px}.footer-brand-col{grid-column:1/-1}.site-footer{padding:43px 7vw 22px}.footer-bottom{flex-direction:column;gap:10px}.back-to-top{right:14px;bottom:14px;width:39px;height:39px}.quick-view-backdrop{padding:12px;align-items:flex-end}.quick-view{grid-template-columns:1fr;width:100%;max-height:calc(100dvh - 24px);overflow:auto}.quick-view-visual{min-height:0;height:36vh;max-height:310px}.quick-view-visual img{max-height:100%}.quick-view-copy{padding:24px 22px 25px}.quick-view-copy h2{font-size:30px;margin:10px 0 7px}.quick-view-price{margin-bottom:12px}.quick-view-copy p{font-size:10px;margin-bottom:17px}.quick-view-foot{margin-top:14px}.quick-view-close{right:10px;top:10px;width:34px;height:34px}.cart-drawer{padding:0}}
+    @media(max-width:380px){.search-header{display:none}.header-tools{gap:7px}.saved-toggle{font-size:6px}.bag-trigger{font-size:6px}.product-title-line{display:block}.price{display:block;margin-top:4px}.product-description{min-height:40px}}
+    @media(prefers-reduced-motion:reduce){.hero-media{animation:none}.product,.quick-view{animation:none}}
+
+  </style>
+</head>
+<body>
+  <div class="announcement"><span class="dot"></span> Complimentary UK delivery on qualifying orders <span class="dot"></span> VEYRO essentials</div>
+  <header class="site-header">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h18M3 17h18"/></svg>
+    </button>
+    <nav class="nav" aria-label="Main navigation"><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">Our story</a></nav>
+    <a class="wordmark" href="#top" aria-label="VEYRO home">VEYRO</a>
+    <div class="header-tools"><a class="header-link search-header" href="#shop">Discover</a><button class="header-link saved-toggle" id="savedToggle" type="button" aria-pressed="false">Saved <span class="saved-count" id="savedCount">0</span></button><button class="header-link bag-trigger" id="openCart" type="button">Bag <span class="bag-count" id="cartCount">0</span></button></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"><a href="#shop">Shop all</a><a href="#collections">Collections</a><a href="#about">Our story</a><a href="#contact">Contact</a></nav>
+  </header>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <main id="top">
+    <section class="hero" aria-label="VEYRO new collection">
+      <div class="hero-media" role="img" aria-label="Contemporary streetwear editorial photograph"></div>
+      <div class="hero-content"><div class="eyebrow hero-kicker">The everyday, considered</div><h1>FORM<br>MEETS <em>feeling.</em></h1><p class="hero-copy">A quieter kind of streetwear. Thoughtful essentials, considered details and pieces made to move with you.</p><a class="button" href="#shop">Explore the collection <span class="arrow">↗</span></a></div>
+      <div class="hero-index">VEYRO / 001 &nbsp; — &nbsp; NEW SEASON</div>
+    </section>
+    <div class="ticker" aria-label="Brand statement"><span>Made for everyday</span><span>✳</span><span>Less, but better</span><span>✳</span><span>Wear on repeat</span><span>✳</span><span>Made for everyday</span></div>
+
+    <section class="section" id="collections">
+      <div class="section-heading"><div><span class="section-label">Find your uniform</span><h2>THE VEYRO EDIT</h2></div><p class="section-intro">Easy layers. Everyday favourites. Pieces that feel like you, wherever the day takes you.</p></div>
+      <div class="category-grid">
+        <a class="category-card" href="#shop" data-category-link="tops"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=85" alt="Contemporary streetwear styling" loading="lazy"><span class="category-info"><span><small>01 / Everyday layers</small><strong>TOPS & LAYERS</strong></span><span class="circle-arrow">↗</span></span></a>
+        <a class="category-card" href="#shop" data-category-link="bottoms"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85" alt="Minimal modern fashion look" loading="lazy"><span class="category-info"><span><small>02 / Off-duty uniform</small><strong>BOTTOMS</strong></span><span class="circle-arrow">↗</span></span></a>
+        <a class="category-card" href="#shop" data-category-link="accessories"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85" alt="Fashion portrait and accessories" loading="lazy"><span class="category-info"><span><small>03 / The finishing touch</small><strong>ACCESSORIES</strong></span><span class="circle-arrow">↗</span></span></a>
+      </div>
+    </section>
+
+    <section class="section collection-section" id="shop">
+      <div class="collection-top"><div><span class="section-label">Thoughtfully selected</span><h2>SHOP THE PIECES</h2><div class="collection-meta" id="productSource">Loading the collection…</div></div><div class="collection-tools"><label class="search-box" aria-label="Search products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Find your piece…" autocomplete="off"></label><select class="sort-select" id="sort" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="az">Name: A–Z</option></select></div></div>
+      <div class="filter-row" id="filters" aria-label="Filter products"><button class="filter active" type="button" data-filter="all">View all</button><button class="filter" type="button" data-filter="tops">Tops</button><button class="filter" type="button" data-filter="bottoms">Bottoms</button><button class="filter" type="button" data-filter="accessories">Accessories</button></div>
+      <div class="product-grid" id="products" aria-live="polite"><p class="empty-state">Loading VEYRO essentials…</p></div>
+    </section>
+
+    <section class="editorial" id="about">
+      <div class="editorial-image"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=88" alt="Modern fashion editorial look" loading="lazy"></div>
+      <div class="editorial-copy"><span class="section-label">The VEYRO point of view</span><h2>NOT MORE.<br><em>Just better.</em></h2><p>We believe getting dressed should feel effortless. Our approach is simple: clean silhouettes, thoughtful details and everyday pieces that earn their place in your wardrobe.</p><a class="underlined-link" href="#shop">Discover the collection <span>↗</span></a></div>
+    </section>
+
+    <section class="manifesto"><span class="section-label">A way of wearing</span><h2>Keep what feels right.<br><em>Wear it your way.</em></h2><p>VEYRO is an evolving edit of modern essentials — built around comfort, confidence and the freedom to make a look your own.</p></section>
+    <section class="values" aria-label="VEYRO values"><article class="value"><span class="value-number">01</span><h3>Considered design</h3><p>Clean lines and thoughtful details, without the unnecessary extras.</p></article><article class="value"><span class="value-number">02</span><h3>Everyday by nature</h3><p>Versatile pieces designed to fit naturally into your daily rotation.</p></article><article class="value"><span class="value-number">03</span><h3>Wear on repeat</h3><p>A wardrobe built around easy combinations and personal expression.</p></article></section>
+
+    <section class="newsletter" id="contact"><div><span class="section-label" style="color:#c2c5b8">The occasional update</span><h2>IN GOOD<br>COMPANY.</h2><p>Hear about new pieces, collection updates and what’s happening at VEYRO.</p></div><form class="newsletter-form" id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Your email address" required><button type="submit">Stay in the loop ↗</button></form><p class="newsletter-status" id="newsletterStatus" role="status"></p></section>
+  </main>
+  <footer class="site-footer"><div class="footer-main"><div class="footer-brand-col"><a class="footer-logo" href="#top">VEYRO</a><p class="footer-about">Modern essentials for everyday movement. A considered approach to getting dressed, built around the pieces you reach for most.</p></div><div class="footer-col"><h3>Explore</h3><a href="#shop">Shop all</a><a href="#collections">Collections</a><a href="#about">Our story</a></div><div class="footer-col"><h3>Customer care</h3><a href="mailto:hello@veyro.co.uk">Contact us</a><a href="#contact">Delivery information</a><a href="#contact">Returns</a></div><div class="footer-col"><h3>Follow along</h3><a href="#contact">Instagram</a><a href="#contact">TikTok</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> VEYRO. ALL RIGHTS RESERVED.</span><span>INDEPENDENT STREETWEAR · UK</span></div></footer>
+
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <aside class="cart-drawer" id="drawer" aria-label="Shopping bag" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="drawer-head">
+      <div><div class="drawer-kicker">VEYRO / YOUR SELECTION</div><h2>Your bag <span id="bagHeadingCount">(0)</span></h2></div>
+      <button class="close-button" id="closeCart" type="button" aria-label="Close shopping bag">×</button>
+    </div>
+    <div class="drawer-delivery"><span class="delivery-mark">✳</span><span>Considered pieces. Ready for your everyday.</span></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-summary" id="cartSummary">
+      <div class="summary-caption"><span>Order summary</span><span id="summaryItemCount">0 ITEMS</span></div>
+      <div class="cart-total"><span>Subtotal</span><strong id="subtotal">£0.00</strong></div>
+      <p class="cart-note">Delivery and any applicable taxes are calculated at checkout. This is a demo checkout; no payment is taken.</p>
+      <form class="checkout-form" id="checkoutForm">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+        <button type="submit"><span>Continue to demo checkout</span><span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="checkout-message" id="checkoutMessage" role="status"></p>
+      <div class="drawer-footnote"><span>VEYRO</span><span>MADE FOR EVERYDAY</span></div>
+    </div>
+  </aside>
+  <div class="quick-view-backdrop" id="quickViewBackdrop" aria-hidden="true">
+    <section class="quick-view" id="quickView" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle">
+      <button class="quick-view-close" id="quickViewClose" type="button" aria-label="Close product details">×</button>
+      <div class="quick-view-visual" id="quickViewVisual"><span>VEYRO</span></div>
+      <div class="quick-view-copy">
+        <div class="quick-view-kicker" id="quickViewKicker">VEYRO / THE COLLECTION</div>
+        <h2 id="quickViewTitle">Product name</h2>
+        <div class="quick-view-price" id="quickViewPrice">£0.00</div>
+        <p id="quickViewDescription">Product details.</p>
+        <label for="quickViewSize">Select size</label>
+        <select id="quickViewSize"></select>
+        <button class="quick-view-add" id="quickViewAdd" type="button">Add to bag <span>↗</span></button>
+        <div class="quick-view-foot">A VEYRO everyday essential</div>
+      </div>
+    </section>
+  </div>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+const money = p => '£' + (Number(p || 0) / 100).toFixed(2);
+const $ = id => document.getElementById(id);
+let products = [];
+let activeFilter = 'all';
+let catalogLabel = 'THE VEYRO COLLECTION';
+let savedOnly = false;
+let selectedQuickProduct = null;
+let savedIds = [];
+try { const stored = JSON.parse(localStorage.getItem('veyro-saved') || '[]'); savedIds = Array.isArray(stored) ? stored.map(String) : []; } catch (error) { savedIds = []; }
+let cart = [];
+try {
+  const saved = JSON.parse(localStorage.getItem('veyro-cart') || '[]');
+  cart = Array.isArray(saved) ? saved.filter(x => x && x.productId != null && x.variantId != null).map(x => ({...x, qty: Math.max(1, Math.floor(Number(x.qty) || 1)), price: Math.max(0, Number(x.price) || 0)})) : [];
+} catch (error) { cart = []; }
+$('year').textContent = new Date().getFullYear();
+
+function showToast(message) {
+  const toast = $('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove('show'), 2300);
+}
+function saveCart() {
+  try { localStorage.setItem('veyro-cart', JSON.stringify(cart)); } catch (error) { /* Storage may be unavailable in private browsing. */ }
+  renderCart();
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  $('cartCount').textContent = count;
+  $('bagHeadingCount').textContent = '(' + count + ')';
+}
+function productCategory(product) {
+  const text = ((product.title || '') + ' ' + (product.description || '')).toLowerCase();
+  if (/cap|hat|beanie|bag|sock|accessor/.test(text)) return 'accessories';
+  if (/trouser|pant|short|jogger|legging|bottom/.test(text)) return 'bottoms';
+  return 'tops';
+}
+function availableVariants(product) {
+  return (Array.isArray(product.variants) ? product.variants : []).filter(v => v && v.is_available !== false);
+}
+function productPrice(product) {
+  const variants = availableVariants(product);
+  return variants.length ? Math.min(...variants.map(v => Number(v.price) || 0)) : 0;
+}
+function getVisibleProducts() {
+  let list = products.filter(p => (activeFilter === 'all' || productCategory(p) === activeFilter) && (!savedOnly || savedIds.includes(String(p.id))));
+  const query = $('search').value.trim().toLowerCase();
+  if (query) list = list.filter(p => ((p.title || '') + ' ' + (p.description || '')).toLowerCase().includes(query));
+  switch ($('sort').value) {
+    case 'low': list.sort((a,b) => productPrice(a) - productPrice(b)); break;
+    case 'high': list.sort((a,b) => productPrice(b) - productPrice(a)); break;
+    case 'az': list.sort((a,b) => (a.title || '').localeCompare(b.title || '')); break;
+  }
+  return list;
+}
+function updateSavedCount() {
+  $('savedCount').textContent = savedIds.length;
+  $('savedToggle').classList.toggle('active', savedOnly);
+  $('savedToggle').setAttribute('aria-pressed', String(savedOnly));
+}
+function toggleSaved(productId) {
+  const id = String(productId);
+  if (savedIds.includes(id)) {
+    savedIds = savedIds.filter(value => value !== id);
+    showToast('Removed from saved pieces');
+  } else {
+    savedIds.push(id);
+    showToast('Saved for later');
+  }
+  try { localStorage.setItem('veyro-saved', JSON.stringify(savedIds)); } catch (error) { /* Local storage can be unavailable. */ }
+  updateSavedCount();
+  renderProducts();
+}
+function openQuickView(product) {
+  selectedQuickProduct = product;
+  const visual = $('quickViewVisual');
+  visual.replaceChildren();
+  if (product.image) {
+    const image = document.createElement('img');
+    image.src = product.image;
+    image.alt = product.title || 'VEYRO product';
+    image.onerror = () => { image.remove(); const fallback = document.createElement('span'); fallback.textContent = 'VEYRO'; visual.appendChild(fallback); };
+    visual.appendChild(image);
+  } else {
+    const fallback = document.createElement('span'); fallback.textContent = 'VEYRO'; visual.appendChild(fallback);
+  }
+  $('quickViewKicker').textContent = 'VEYRO / ' + productCategory(product).toUpperCase();
+  $('quickViewTitle').textContent = product.title || 'VEYRO essential';
+  $('quickViewPrice').textContent = availableVariants(product).length ? money(productPrice(product)) : 'Currently unavailable';
+  $('quickViewDescription').textContent = product.description || 'A considered everyday essential from the VEYRO collection.';
+  const select = $('quickViewSize');
+  select.replaceChildren();
+  const variants = availableVariants(product);
+  variants.forEach(variant => {
+    const option = document.createElement('option');
+    option.value = variant.id;
+    option.textContent = variant.title || 'Standard';
+    select.appendChild(option);
+  });
+  if (!variants.length) {
+    const option = document.createElement('option'); option.textContent = 'Unavailable'; select.appendChild(option);
+  }
+  $('quickViewAdd').disabled = !variants.length;
+  $('quickViewBackdrop').classList.add('open');
+  $('quickViewBackdrop').setAttribute('aria-hidden', 'false');
+  document.body.classList.add('locked');
+  $('quickViewClose').focus();
+}
+function closeQuickView() {
+  $('quickViewBackdrop').classList.remove('open');
+  $('quickViewBackdrop').setAttribute('aria-hidden', 'true');
+  selectedQuickProduct = null;
+  document.body.classList.toggle('locked', $('drawer').classList.contains('open'));
+}
+function addVariantToCart(product, variant) {
+  if (!product || !variant) return;
+  const existing = cart.find(item => String(item.productId) === String(product.id) && String(item.variantId) === String(variant.id));
+  if (existing) { existing.qty += 1; if (!existing.image) existing.image = product.image || ''; }
+  else cart.push({productId: product.id, variantId: variant.id, title: product.title || 'VEYRO essential', size: variant.title || 'Standard', price: Number(variant.price) || 0, image: product.image || '', qty: 1});
+  saveCart();
+  showToast('Added to your bag');
+}
+
+function renderProducts() {
+  const root = $('products');
+  root.replaceChildren();
+  const list = getVisibleProducts();
+  const totalLabel = list.length + (list.length === 1 ? ' PIECE' : ' PIECES');
+  $('productSource').textContent = (savedOnly ? 'YOUR SAVED PIECES' : catalogLabel) + '  /  ' + totalLabel; 
+  if (!list.length) {
+    const message = document.createElement('p');
+    message.className = 'empty-state';
+    message.textContent = savedOnly ? 'No saved pieces yet. Tap the heart on any product to keep it here.' : (products.length ? 'No pieces found. Try another search or filter.' : 'The collection is currently unavailable. Check the store connection and try again.');
+    root.appendChild(message);
+    return;
+  }
+  list.forEach((product, index) => {
+    const variants = availableVariants(product);
+    const card = document.createElement('article');
+    card.className = 'product';
+    card.style.animationDelay = Math.min(index * 45, 250) + 'ms';
+
+    const imageWrap = document.createElement('div');
+    imageWrap.className = 'product-image';
+    if (product.image) {
+      const image = document.createElement('img');
+      image.src = product.image;
+      image.alt = product.title || 'VEYRO product';
+      image.loading = 'lazy';
+      image.onerror = () => image.remove();
+      imageWrap.appendChild(image);
+    }
+    const badge = document.createElement('span');
+    badge.className = 'product-badge';
+    badge.textContent = 'VEYRO / ESSENTIAL';
+    imageWrap.appendChild(badge);
+    const cardTools = document.createElement('div');
+    cardTools.className = 'product-card-tools';
+    const saveButton = document.createElement('button');
+    saveButton.type = 'button';
+    saveButton.className = 'product-tool' + (savedIds.includes(String(product.id)) ? ' saved' : '');
+    saveButton.textContent = savedIds.includes(String(product.id)) ? '♥' : '♡';
+    saveButton.setAttribute('aria-label', (savedIds.includes(String(product.id)) ? 'Remove from' : 'Add to') + ' saved pieces: ' + (product.title || 'product'));
+    saveButton.setAttribute('aria-pressed', String(savedIds.includes(String(product.id))));
+    saveButton.addEventListener('click', () => toggleSaved(product.id));
+    cardTools.appendChild(saveButton);
+    imageWrap.appendChild(cardTools);
+    const quick = document.createElement('button');
+    quick.type = 'button';
+    quick.className = 'product-action';
+    quick.textContent = variants.length ? 'Quick view  ↗' : 'Currently unavailable';
+    quick.disabled = !variants.length;
+    quick.addEventListener('click', () => openQuickView(product));
+    imageWrap.appendChild(quick);
+
+    const details = document.createElement('div');
+    details.className = 'product-details';
+    const titleLine = document.createElement('div');
+    titleLine.className = 'product-title-line';
+    const title = document.createElement('h3');
+    title.textContent = product.title || 'VEYRO essential';
+    const price = document.createElement('span');
+    price.className = 'price';
+    price.textContent = variants.length ? money(productPrice(product)) : 'Unavailable';
+    titleLine.append(title, price);
+    const description = document.createElement('p');
+    description.className = 'product-description';
+    description.textContent = product.description || 'An everyday VEYRO essential.';
+    const controls = document.createElement('div');
+    controls.className = 'product-controls';
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', 'Choose size for ' + (product.title || 'product'));
+    if (!variants.length) {
+      const option = document.createElement('option'); option.textContent = 'Unavailable'; select.appendChild(option);
+    }
+    variants.forEach(variant => {
+      const option = document.createElement('option');
+      option.value = variant.id;
+      option.textContent = variant.title || 'Standard';
+      select.appendChild(option);
+    });
+    const add = document.createElement('button');
+    add.type = 'button';
+    add.className = 'add-button';
+    add.textContent = 'Add to bag';
+    add.disabled = !variants.length;
+    add.addEventListener('click', () => {
+      const variant = variants.find(v => String(v.id) === select.value);
+      if (!variant) return;
+      addVariantToCart(product, variant);
+    });
+    controls.append(select, add);
+    details.append(titleLine, description, controls);
+    card.append(imageWrap, details);
+    root.appendChild(card);
+  });
+}
+function renderCart() {
+  const root = $('cartItems');
+  root.replaceChildren();
+  const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  $('bagHeadingCount').textContent = '(' + itemCount + ')';
+  $('summaryItemCount').textContent = itemCount + (itemCount === 1 ? ' ITEM' : ' ITEMS');
+
+  if (!cart.length) {
+    const empty = document.createElement('div');
+    empty.className = 'cart-empty';
+    const icon = document.createElement('div');
+    icon.className = 'cart-empty-icon';
+    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>';
+    const heading = document.createElement('strong');
+    heading.textContent = 'A little room for something good.';
+    const message = document.createElement('p');
+    message.textContent = 'Your bag is empty for now. Explore the collection and find your next everyday favourite.';
+    const shop = document.createElement('a');
+    shop.className = 'empty-shop-link';
+    shop.href = '#shop';
+    shop.innerHTML = '<span>Explore the collection</span><span aria-hidden="true">↗</span>';
+    shop.addEventListener('click', () => toggleCart(false));
+    empty.append(icon, heading, message, shop);
+    root.appendChild(empty);
+  }
+
+  $('cartSummary').hidden = !cart.length;
+
+  cart.forEach((item, index) => {
+    const line = document.createElement('article');
+    line.className = 'cart-line';
+
+    const product = products.find(p => String(p.id) === String(item.productId));
+    const imageSrc = item.image || (product && product.image) || '';
+    if (imageSrc) {
+      const image = document.createElement('img');
+      image.className = 'cart-line-image';
+      image.src = imageSrc;
+      image.alt = item.title || 'VEYRO product';
+      image.loading = 'lazy';
+      image.onerror = () => {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'cart-line-image-placeholder';
+        placeholder.textContent = 'VEYRO';
+        image.replaceWith(placeholder);
+      };
+      line.appendChild(image);
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'cart-line-image-placeholder';
+      placeholder.textContent = 'VEYRO';
+      line.appendChild(placeholder);
+    }
+
+    const content = document.createElement('div');
+    content.className = 'cart-line-content';
+    const title = document.createElement('div');
+    title.className = 'cart-line-title';
+    title.textContent = item.title || 'VEYRO essential';
+    const meta = document.createElement('small');
+    meta.textContent = 'Size · ' + (item.size || 'Standard');
+
+    const actions = document.createElement('div');
+    actions.className = 'cart-line-actions';
+    const quantity = document.createElement('div');
+    quantity.className = 'qty-control';
+    const minus = document.createElement('button');
+    minus.type = 'button';
+    minus.textContent = '−';
+    minus.setAttribute('aria-label', 'Decrease quantity of ' + (item.title || 'item'));
+    minus.addEventListener('click', () => {
+      if (cart[index].qty > 1) cart[index].qty -= 1;
+      else cart.splice(index, 1);
+      saveCart();
+    });
+    const number = document.createElement('span');
+    number.textContent = item.qty;
+    const plus = document.createElement('button');
+    plus.type = 'button';
+    plus.textContent = '+';
+    plus.setAttribute('aria-label', 'Increase quantity of ' + (item.title || 'item'));
+    plus.addEventListener('click', () => { cart[index].qty += 1; saveCart(); });
+    quantity.append(minus, number, plus);
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'remove-button';
+    remove.textContent = 'Remove';
+    remove.addEventListener('click', () => { cart.splice(index, 1); saveCart(); });
+    actions.append(quantity, remove);
+    content.append(title, meta, actions);
+
+    const price = document.createElement('div');
+    price.className = 'cart-line-price';
+    price.textContent = money(Number(item.price || 0) * item.qty);
+    line.append(content, price);
+    root.appendChild(line);
+  });
+
+  const subtotal = cart.reduce((sum, item) => sum + Number(item.price || 0) * item.qty, 0);
+  $('subtotal').textContent = money(subtotal);
+  $('checkoutForm').hidden = !cart.length;
+  $('checkoutMessage').textContent = '';
+  $('checkoutMessage').hidden = !cart.length;
+  $('cartCount').textContent = itemCount;
+}
+function toggleCart(open) {
+  $('drawer').classList.toggle('open', open);
+  $('backdrop').classList.toggle('open', open);
+  $('drawer').setAttribute('aria-hidden', String(!open));
+  document.body.classList.toggle('locked', open || $('quickViewBackdrop').classList.contains('open'));
+  if (open) $('closeCart').focus();
+  else $('openCart').focus();
+}
+$('openCart').addEventListener('click', () => toggleCart(true));
+$('closeCart').addEventListener('click', () => toggleCart(false));
+$('backdrop').addEventListener('click', () => toggleCart(false));
+document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeQuickView(); toggleCart(false); $('mobileNav').classList.remove('open'); $('menuToggle').setAttribute('aria-expanded', 'false'); } });
+$('menuToggle').addEventListener('click', () => {
+  const open = $('mobileNav').classList.toggle('open');
+  $('menuToggle').setAttribute('aria-expanded', String(open));
+  $('menuToggle').setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+});
+$('mobileNav').querySelectorAll('a').forEach(link => link.addEventListener('click', () => { $('mobileNav').classList.remove('open'); $('menuToggle').setAttribute('aria-expanded', 'false'); }));
+$('filters').addEventListener('click', event => {
+  const button = event.target.closest('button[data-filter]');
+  if (!button) return;
+  activeFilter = button.dataset.filter;
+  savedOnly = false;
+  updateSavedCount();
+  $('filters').querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+  renderProducts();
+});
+document.querySelectorAll('[data-category-link]').forEach(link => link.addEventListener('click', () => {
+  activeFilter = link.dataset.categoryLink;
+  savedOnly = false;
+  updateSavedCount();
+  $('filters').querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item.dataset.filter === activeFilter));
+  renderProducts();
+}));
+
+$('savedToggle').addEventListener('click', () => {
+  savedOnly = !savedOnly;
+  updateSavedCount();
+  renderProducts();
+  $('shop').scrollIntoView({behavior:'smooth', block:'start'});
+});
+$('quickViewClose').addEventListener('click', closeQuickView);
+$('quickViewBackdrop').addEventListener('click', event => { if (event.target === $('quickViewBackdrop')) closeQuickView(); });
+$('quickViewAdd').addEventListener('click', () => {
+  if (!selectedQuickProduct) return;
+  const variant = availableVariants(selectedQuickProduct).find(item => String(item.id) === $('quickViewSize').value);
+  if (!variant) return;
+  addVariantToCart(selectedQuickProduct, variant);
+  closeQuickView();
+});
+$('backToTop').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+function updateScrollUI() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  $('scrollProgress').style.width = progress + '%';
+  $('backToTop').classList.toggle('visible', window.scrollY > 650);
+}
+window.addEventListener('scroll', updateScrollUI, {passive:true});
+updateScrollUI();
+
+$('search').addEventListener('input', renderProducts);
+$('sort').addEventListener('change', renderProducts);
+$('checkoutForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!cart.length) { $('checkoutMessage').textContent = 'Your bag is empty.'; return; }
+  $('checkoutMessage').textContent = 'Submitting demo checkout…';
+  const submit = $('checkoutForm').querySelector('button');
+  submit.disabled = true;
+  try {
+    const response = await fetch('/api/checkout-demo', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: $('email').value, items: cart.map(item => ({productId: item.productId, variantId: item.variantId, quantity: item.qty}))})
+    });
+    const data = await response.json();
+    $('checkoutMessage').textContent = data.message || data.error || 'Please try again.';
+  } catch (error) {
+    $('checkoutMessage').textContent = 'Backend not connected yet. Run the Node server to test checkout.';
+  } finally { submit.disabled = false; }
+});
+$('newsletterForm').addEventListener('submit', event => {
+  event.preventDefault();
+  $('newsletterStatus').textContent = 'Thanks for your interest. Connect a newsletter service to collect sign-ups.';
+  $('newsletterEmail').value = '';
+});
+async function loadProducts() {
+  try {
+    const response = await fetch('/api/products');
+    if (!response.ok) throw new Error('Products API returned ' + response.status);
+    const data = await response.json();
+    products = Array.isArray(data.products) ? data.products : [];
+    catalogLabel = data.source === 'printify' ? 'LIVE PRINTIFY COLLECTION' : 'THE VEYRO COLLECTION';
+    renderProducts();
+    renderCart();
+    updateSavedCount();
+  } catch (error) {
+    catalogLabel = 'STORE CONNECTION UNAVAILABLE';
+    products = [];
+    updateSavedCount();
+    renderProducts();
+  }
+}
+saveCart();
+updateSavedCount();
+loadProducts();
+</script>
+</body>
+</html>
